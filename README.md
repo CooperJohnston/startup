@@ -7,3 +7,9 @@ This startup will create a platform for users to review and reccomend books they
 
 ## The Concept
 <img width="889" alt="Website Mockup" src="https://github.com/CooperJohnston/startup/assets/144291294/61a0eba5-15c2-42b0-8108-51680892ffbd">
+A possible design for the website, allowing users to collect and review products.
+
+## The Applications
+- **Authentiaction:** Each user has his or her own profile that contains their information about what books they have read and reviewed, as well as their friends and history on the site.
+- **Database:** This website would store information about different books and series, as well as their aggragate reviews.
+- **WebSocket Data:** Traffic on the website would consist of reviews being published and the items being added to the database. As well as information regarding customer's friends.
