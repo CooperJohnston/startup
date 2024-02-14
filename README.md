@@ -20,3 +20,5 @@ A possible design for the website, allowing users to collect and review products
 - **Login** - The index page is gets input of a username and password
 - **Websocket** - The popular page ranks the most popular user reviewed book and displays it for others to access and view.
 - **Text** - User information, suggested information, and contact information come in text information in the user information section.
+
+## CSS DELIVERABLE
