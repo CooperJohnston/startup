@@ -22,3 +22,9 @@ A possible design for the website, allowing users to collect and review products
 - **Text** - User information, suggested information, and contact information come in text information in the user information section.
 
 ## CSS DELIVERABLE
+- **PREREQUISITES** - Simon CSS successfully added, and 10+ commits occurred. Github accessible.
+- **RESIZING** - The application properly resizes in all windows
+- **Images** - Proper imagery was added for the table. Purposely, the have stayed rectangles to maintain the comic book feel.
+- **Proper Header, Footer and Main formatting**
+- **App Elements** - Design for table and buttons is formatted
+- **Text** - UTF-8 font added to all elements/
