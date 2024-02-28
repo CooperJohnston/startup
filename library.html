@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 
     <meta charset="UTF-8" />
@@ -16,7 +17,7 @@
 <body class="bg-dark text-light">
     <header class="container-fluid">
         <nav class="navbar fixed-top navbar-dark">
-            <a class="navbar-brand" href="Browser.html">User</a>
+            <a class="navbar-brand" href="Browser.html"><span class="userName"></span>User</a>
 
             <menu class="navbar-nav">
 
@@ -50,7 +51,7 @@
         <th class="text-center ">Page 1 | Page 2 </th>
     </tr>
     <tr class="border border-white">
-        <td> <img src="https://imagecomics.com/files/releases/_1200x630_fit_center-center_82_none/Invincible_01-1.jpg?mtime=1614296272" alt="Book Cover" width="50" height="100"> <p> Invincible #1</p></td>
+        <td>   <button   onclick="grade('Invincible 1')"><img src="https://imagecomics.com/files/releases/_1200x630_fit_center-center_82_none/Invincible_01-1.jpg?mtime=1614296272" alt="Book Cover" width="50" height="100" > </button> <p>Invincible #1 <span id="Invincible 1"></span></p></td>
         <td> <img src="https://imagecomics.com/files/releases/_1200x630_fit_center-center_82_none/Invincible_01-1.jpg?mtime=1614296272" alt="Book Cover" width="50" height="100"> <p> Invincible #2</p></td>
         <td> <img src="https://imagecomics.com/files/releases/_1200x630_fit_center-center_82_none/Invincible_01-1.jpg?mtime=1614296272" alt="Book Cover" width="50" height="100"> <p> Invincible #3</p></td>
     </tr>
@@ -73,5 +74,6 @@
       <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
     </div>
     </footer>
+<script src = "review.js"></script>
 </body>
 </html>
