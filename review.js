@@ -15,7 +15,7 @@ class reviews {
             scores = JSON.parse(this.books)
 
         }
-        const newScore = {name: name, score: score};
+        const newScore = {name: name, grade: score};
         scores.push(newScore);
         localStorage.setItem("Reviews", JSON.stringify(scores))
         this.books = window.localStorage.getItem("Reviews");

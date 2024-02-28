@@ -16,15 +16,13 @@ function loadScores() {
 
 
       nameTdEl.textContent = score.name;
-      scoreTdEl.textContent = score.score;
+      scoreTdEl.textContent = score.grade;
 
 
       const rowEl = document.createElement('tr');
 
       rowEl.appendChild(nameTdEl);
       rowEl.appendChild(scoreTdEl);
-
-
       tableBodyEl.appendChild(rowEl);
     }
   } else {
