@@ -19,13 +19,6 @@ function displaySortedReviews(reviews) {
     });
 }
 
-// Assuming this is your reviews object with sample data
-const reviews = {
-    "Invincible 1": 5,
-    "Invincible 2": 4,
-    "Invincible 3": 5,
-    // Add more reviews as needed
-};
 
 // Call the function to display the sorted reviews when appropriate
 displaySortedReviews(JSON.parse(localStorage.getItem("Reviews")));

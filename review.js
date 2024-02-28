@@ -45,7 +45,8 @@ class reviews {
     constructor() {
     const storedReviews = localStorage.getItem("Reviews");
     this.books = storedReviews ? JSON.parse(storedReviews) : {};
-        this.populateReviews(); }
+    this.populateReviews();
+    }
     // Call a method to populate the reviews on page load.
 populateReviews() {
         for (const name in this.books) {
