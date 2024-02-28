@@ -31,6 +31,6 @@ A possible design for the website, allowing users to collect and review products
 
 ## JAVASSCRIPT DELIVERABLE
 - **PREQUISITES** - Simon Java deployed, 10 commits occured.
-- **USER INFO** - The user information is stored in local storage, simulating a database using the users information and websocket data.
-- **DATABASE** - Using a JSON structure, a list of all the scores and their respective books is stored on local storage in the system. It is updated when a user writes their new score.
-- **JAVASCRIPT INTERACTIONS** - Users can leave simple reviews of books and view popular books as they appear from other users.
+- **WEBSOCKET** - The user information is stored in local storage, simulating a database using the users information and websocket data. When more users are added, the most popular reviews will appear on the website, allowing for user interaction. The hihest review is automatically displayed.
+- **DATABASE** - Using a JSON structure, a list of all the scores and their respective books is stored on local storage in the system. It is updated when a user writes their new score. The website autotamtically formats itself as more books are added.
+- **JAVASCRIPT INTERACTIONS** - Users can leave simple reviews of books and view popular books as they appear from other users. 
