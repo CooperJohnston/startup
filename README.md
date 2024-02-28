@@ -28,3 +28,6 @@ A possible design for the website, allowing users to collect and review products
 - **Proper Header, Footer and Main formatting**
 - **App Elements** - Design for table and buttons is formatted
 - **Text** - UTF-8 font added to all elements/
+
+## JAVASSCRIPT DELIVERABLE
+-**PREQUISITES** - Simon Java deployed, 10 commits occured.
