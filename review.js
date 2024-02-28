@@ -3,27 +3,34 @@ const reviewsData = [
   { name: 'Invincible 2', imageUrl: 'https://cdn.imagecomics.com/assets/i/releases/16642/invincible-2_6188b1a0f9.jpg' },
   { name: 'Invincible 3', imageUrl: 'https://cdn.imagecomics.com/assets/i/releases/16641/invincible-3_a0debff1bf.jpg' }
 ];
-const container = document.getElementById('reviewsContainer'); // Assume there is a div with this ID in your HTML.
+const container = document.getElementById('reviewsContainer');
 
 reviewsData.forEach(review => {
-  const button = document.createElement('button');
-  const img = document.createElement('img');
-  img.src = review.imageUrl;
-  img.alt = review.name;
-  img.width = 50;
-  img.height = 100;
-  button.appendChild(img);
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'buttonContainer';
 
-  const span = document.createElement('span');
-  span.id = review.name.replace(/\s+/g, '_'); // Replace spaces with underscores for a valid id.
+    const button = document.createElement('button');
+    const img = document.createElement('img');
+    img.src = review.imageUrl;
+    img.alt = review.name;
+    button.appendChild(img);
 
-  const paragraph = document.createElement('p');
-  paragraph.textContent = `${review.name} `;
+    const span = document.createElement('span');
+    span.id = review.name.replace(/\s+/g, '_');
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `${review.name} `;
+    paragraph.appendChild(span);
+      paragraph.textContent = `${review.name} `;
   paragraph.appendChild(span);
 
-  button.onclick = () => r.review(review.name.replace(/\s+/g, '_')); // Call the review function on click.
+  button.onclick = () => r.review(review.name.replace(/\s+/g, '_')); // Ensure function call is correctly set up
 
-  container.appendChild(button);
+  buttonContainer.appendChild(button);
+  //buttonContainer.appendChild(paragraph); // Include if you want the text to be part of the button container
+
+  container.appendChild(buttonContainer);
+  // Alternatively, append paragraph to container separately if outside of buttonContainer
   container.appendChild(paragraph);
 });
 

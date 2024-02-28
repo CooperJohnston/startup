@@ -1,33 +1,31 @@
-function loadScores() {
-  let scores = [];
-  const scoresText = localStorage.getItem('Reviews');
-  if (scoresText) {
-    scores = JSON.parse(scoresText);
-  }
+function displaySortedReviews(reviews) {
+    // Convert the reviews object into an array of [name, score] pairs
+    const reviewsArray = Object.entries(reviews);
 
-  const tableBodyEl = document.querySelector('#scores');
+    // Sort the array based on score in descending order; when scores are equal, it maintains the original order
+    reviewsArray.sort((a, b) => b[1] - a[1]);
 
-  if (scores.length) {
-    for (const [i, score] of scores.entries()) {
+    // Select the tbody element where scores will be inserted
+    const scoresBody = document.getElementById("scores");
+    scoresBody.innerHTML = ""; // Clear existing tbody contents
 
-      const nameTdEl = document.createElement('td');
-      const scoreTdEl = document.createElement('td');
-
-
-
-      nameTdEl.textContent = score.name;
-      scoreTdEl.textContent = score.grade;
-
-
-      const rowEl = document.createElement('tr');
-
-      rowEl.appendChild(nameTdEl);
-      rowEl.appendChild(scoreTdEl);
-      tableBodyEl.appendChild(rowEl);
-    }
-  } else {
-    tableBodyEl.innerHTML = '<tr><td colSpan=4>Go review some books to see what is popular!</td></tr>';
-  }
+    // Populate the tbody with sorted review data
+    reviewsArray.forEach(([name, score]) => {
+        const row = scoresBody.insertRow(-1); // -1 ensures the row is added at the end of the tbody
+        const cellName = row.insertCell(0);
+        const cellScore = row.insertCell(1);
+        cellName.textContent = name;
+        cellScore.textContent = score;
+    });
 }
 
-loadScores();
+// Assuming this is your reviews object with sample data
+const reviews = {
+    "Invincible 1": 5,
+    "Invincible 2": 4,
+    "Invincible 3": 5,
+    // Add more reviews as needed
+};
+
+// Call the function to display the sorted reviews when appropriate
+displaySortedReviews(JSON.parse(localStorage.getItem("Reviews")));
