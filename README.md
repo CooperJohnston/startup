@@ -31,3 +31,4 @@ A possible design for the website, allowing users to collect and review products
 
 ## JAVASSCRIPT DELIVERABLE
 -**PREQUISITES** - Simon Java deployed, 10 commits occured.
+-**USER INFO** - The user information is stored in local storage, simulating a database using the users information.
