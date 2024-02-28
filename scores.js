@@ -1,6 +1,6 @@
 function loadScores() {
   let scores = [];
-  const scoresText = localStorage.getItem('reviews');
+  const scoresText = localStorage.getItem('Reviews');
   if (scoresText) {
     scores = JSON.parse(scoresText);
   }
@@ -16,14 +16,14 @@ function loadScores() {
 
 
       nameTdEl.textContent = score.name;
-      scoreTdEl.textContent = score;
+      scoreTdEl.textContent = score.score;
 
 
       const rowEl = document.createElement('tr');
 
       rowEl.appendChild(nameTdEl);
       rowEl.appendChild(scoreTdEl);
-      r
+
 
       tableBodyEl.appendChild(rowEl);
     }
