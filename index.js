@@ -3,7 +3,9 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
-
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
 app.use(cookieParser());
 
 app.use(express.json());
@@ -49,8 +51,4 @@ apiRouter.post('/reviews', async (req, res) => {
     reviews = updateScores(req.body, reviews); // Add/update review
     await saveReviews(reviews); // Save updated reviews back to file
     res.json(reviews); // Respond with updated reviews
-});
-
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
 });
