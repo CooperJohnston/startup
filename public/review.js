@@ -39,14 +39,29 @@ reviewsData.forEach(review => {
   container.appendChild(paragraph);
 });
 
-class reviews {
+class Reviews {
     constructor() {
-    const storedReviews = localStorage.getItem("Reviews");
-    this.books = storedReviews ? JSON.parse(storedReviews) : {};
-    this.populateReviews();
+        // Initialize books as an empty object; it will be populated by fetchReviews.
+        this.books = {};
+        this.fetchReviews();
     }
-    // Call a method to populate the reviews on page load.
-populateReviews() {
+
+    async fetchReviews() {
+        try {
+            const response = await fetch('/get-reviews');
+            if (response.ok) {
+                const data = await response.json();
+                this.books = data;
+                this.populateReviews();
+            } else {
+                throw new Error('Failed to fetch reviews.');
+            }
+        } catch (error) {
+            console.error('Error fetching reviews:', error);
+        }
+    }
+
+    populateReviews() {
         for (const name in this.books) {
             const score = this.books[name];
             const issueReview = document.getElementById(name);
@@ -56,15 +71,12 @@ populateReviews() {
         }
     }
 
-   review(name){
-
-        let score = prompt("What would you rate this out of 5?")
+    review(name) {
+        let score = prompt("What would you rate this out of 5?");
         const issueReview = document.getElementById(name);
         issueReview.textContent = ('(' + score + ' out of 5)');
         this.books[name] = score;
-        localStorage.setItem("Reviews", JSON.stringify(this.books));
-        updateReviews(this.books);
-
+        updateReviews(this.books); // Assumes updateReviews makes a backend call.
     }
 }
 
@@ -87,4 +99,4 @@ async function updateReviews(reviews) {
   }
 }
 
- const r = new reviews();
+ const r = new Reviews();
