@@ -12,7 +12,7 @@ function display(){
         l.textContent = "I have given " + Object.keys(JSON.parse(localStorage.getItem("Reviews"))).length + " total ratings";
         facts.appendChild(l);
         const b = document.createElement('li');
-        b.textContent = data.content;
+        b.textContent = "Comic book qoute of the day: " + "'" + data.content + "'";
         facts.appendChild(b);
         user.appendChild(facts);
     })}
