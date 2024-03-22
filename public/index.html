@@ -4,7 +4,7 @@
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StartupCSS</title>
-    <script src="login.js"></script>
+
 
     <link rel="stylesheet" href="Browser.css" />
     <link
@@ -26,12 +26,21 @@
 
 <div>
 
-    <input type="text" id="User" placeholder="Enter Username"/>
+    <input type="form-control" id="User" placeholder="Enter Username"/>
     <input type="password" placeholder="Enter Password" id="psw"/>
     <button type="button" class="btn btn-primary" onclick="loginUser()">Login</button>
     <button type="button" class="btn btn-primary" onclick="createUser()">Create</button>
 </div>
-
+<div class="modal fade" id="msgModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-dark">
+            <div class="modal-body">error message here</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+</div>
       </div>
 
 <footer class="bg-dark text-white-50">
@@ -42,6 +51,7 @@
       <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
     </div>
     </footer>
+<script src="login.js"></script>
 </body>
 
 

@@ -16,3 +16,50 @@ const reviewCollection = db.collection('reviews');
   console.log(`Unable to connect to database with ${url} because ${ex.message}`);
   process.exit(1);
 });
+
+function getUser(email) {
+  return userCollection.findOne({ email: email });
+}
+
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
+async function createUser(email, password) {
+
+  // Hash the password before we insert it into the database
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await userCollection.insertOne(user);
+
+  return user;
+}
+
+function addScore(score) {
+  reviewCollection.insertOne(score);
+}
+
+function getHighScores() {
+  const query = { score: { $gt: 0, $lt: 900 } };
+  const options = {
+    sort: { score: -1 },
+    limit: 10,
+  };
+  const cursor = scoreCollection.find(query, options);
+  return cursor.toArray();
+}
+
+
+
+module.exports = {
+  getUser,
+  getUserByToken,
+  createUser,
+  addScore,
+  getHighScores,
+};

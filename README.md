@@ -42,3 +42,6 @@ A possible design for the website, allowing users to collect and review products
 - **Calls to third party endpoints** - A fetch call is made on the UNSERINFO.JS page, a 3rd party fetch is made to the random qoute API. I have found an API that has super hero information but I am waiting on authroization with my API key, so the random qoute is a placeholder to make it clear that the technology works.
 - **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for reviews. The index.js takes the reviews data and it is stored in a JSON object ("/update-reviews")
 - **Frontend calls service endpoints** - in index.js accesses the JSON object where reviews are stored on the frontend using a get ("/get-reviews")
+
+## SERVICE ENDPOINTS
+- **PREQUISITIES** -
