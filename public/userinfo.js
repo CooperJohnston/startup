@@ -1,4 +1,4 @@
-function display(){
+function display(data){
         fetch('https://api.quotable.io/random')
     .then((response) => response.json())
     .then((data) => {
@@ -9,13 +9,14 @@ function display(){
         const facts = document.createElement("ul");
         const l = document.createElement('li');
         //saved to local storage at this time because users arent created yet
-        l.textContent = "I have given " + Object.keys(JSON.parse(localStorage.getItem("Reviews"))).length + " total ratings";
+        l.textContent = "I have given " + Object.keys(JSON.parse(localStorage.getItem("reviews"))).length + " total ratings";
         facts.appendChild(l);
         const b = document.createElement('li');
         b.textContent = "Comic book qoute of the day: " + "'" + data.content + "'";
         facts.appendChild(b);
         user.appendChild(facts);
-    })}
+    });
+}
 
 function logout(){
         localStorage.clear();

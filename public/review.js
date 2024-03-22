@@ -41,22 +41,27 @@ reviewsData.forEach(review => {
 
 class Reviews {
     constructor() {
-        // Initialize books as an empty object; it will be populated by fetchReviews.
-        this.books = {};
-        this.fetchReviews();
+        const storedReviews = localStorage.getItem("reviews");
+        this.books = storedReviews ? JSON.parse(storedReviews) : {};
+        this.populateReviews();
+        updateReviews(this.books);
     }
 
     async fetchReviews() {
         try {
-            const response = await fetch('/get-reviews');
+            const response = await fetch('/api/get-reviews');
             if (response.ok) {
                 const data = await response.json();
                 this.books = data;
+                if (this.books === {}){
+                    this.books = JSON.parse(localStorage.getItem("reviews"));
+                }
                 this.populateReviews();
             } else {
                 throw new Error('Failed to fetch reviews.');
             }
         } catch (error) {
+            this.books = JSON.parse(localStorage.getItem("reviews"));
             console.error('Error fetching reviews:', error);
         }
     }
@@ -76,26 +81,25 @@ class Reviews {
         const issueReview = document.getElementById(name);
         issueReview.textContent = ('(' + score + ' out of 5)');
         this.books[name] = score;
-        updateReviews(this.books); // Assumes updateReviews makes a backend call.
+        localStorage.setItem("reviews", JSON.stringify(this.books))
+         // Assumes updateReviews makes a backend call.
     }
 }
 
 async function updateReviews(reviews) {
   try {
-    const response = await fetch('/update-reviews', {
+    const response = await fetch('/api/update-reviews', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(reviews),
     });
-    if(response.ok) {
-      console.log("Reviews updated successfully");
-    } else {
-      console.error("Failed to update reviews");
-    }
+    const updatedReviews = await response.json();
+    localStorage.setItem("reviews", JSON.stringify(updatedReviews));
   } catch (error) {
-    console.error('Error:', error);
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+
   }
 }
 

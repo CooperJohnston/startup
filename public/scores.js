@@ -18,7 +18,37 @@ function displaySortedReviews(reviews) {
         cellScore.textContent = score;
     });
 }
+async function updateReviews(reviews) {
+  try {
+    const response = await fetch('/api/update-reviews', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reviews),
+    });
+    const updatedReviews = await response.json();
+    localStorage.setItem("reviews", JSON.stringify(reviews))
+  } catch (error) {
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+
+  }
+}
+async function fetchReviews() {
+
+        try {
+            const response = await fetch('/api/get-reviews');
+            reviews = await response.json();
+
+
+        } catch {
+            reviews = JSON.parse(localStorage.getItem("reviews"));
+
+        }
+        displaySortedReviews(reviews);
+    }
+
 
 
 // Call the function to display the sorted reviews when appropriate
-displaySortedReviews(JSON.parse(localStorage.getItem("Reviews")));
+fetchReviews();
