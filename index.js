@@ -85,7 +85,7 @@ secureApiRouter.get('/get-reviews',  async(req, res) => {
 });
 
 secureApiRouter.post('/update-reviews', async(req, res) => {
-    reviews = update(req.body, reviews);
+    reviews = DB.addScore(res.body);
     res.send(reviews);
 });
 
@@ -110,10 +110,4 @@ app.listen(port, () => {
 });
 
 
-let reviews = {}
-function update(newRev, reviews) {
-    for (const name in newRev) {
-        reviews[name] = newRev[name];
-    }
-    return reviews;
-}
+

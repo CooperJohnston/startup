@@ -44,4 +44,9 @@ A possible design for the website, allowing users to collect and review products
 - **Frontend calls service endpoints** - in index.js accesses the JSON object where reviews are stored on the frontend using a get ("/get-reviews")
 
 ## SERVICE ENDPOINTS
-- **PREQUISITIES** -
+- **PREQUISITIES** - SIMON LOGIN AND 10 commits
+- **NEW USER** - Database.js has a code to add a new user
+- **USER AUTHENTICATION** - using a cookie parser and an ID, as well as a nested router, users are  authenticted
+- **USER AUTHENTICATION** - yup
+- **MONGODB** - data and credentials are stored in mongodb
+- **RESTRICTION** - If you aren't allowed, an error message have been given
