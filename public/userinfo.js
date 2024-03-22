@@ -18,8 +18,10 @@ function display(data){
     });
 }
 
-function logout(){
-        localStorage.clear();
-        window.location.href = "index.html";
+function logout() {
+  localStorage.removeItem('userName');
+  fetch(`/api/auth/logout`, {
+    method: 'delete',
+  }).then(() => (window.location.href = '/'));
 }
 display();
