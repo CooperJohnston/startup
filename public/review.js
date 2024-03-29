@@ -8,6 +8,8 @@ const reviewsData = [
     {name: 'JLA #1', imageUrl: "https://www.budsartbooks.com/wp-content/uploads/2020/06/jlagh-jla-grant-morrison-omni-book.jpg"},
     {name: 'Naruto Volume 8', imageUrl: 'https://m.media-amazon.com/images/I/917NoDyUC-L._AC_UF1000,1000_QL80_.jpg'},
 ];
+const GameEndEvent = 'gameEnd';
+const GameStartEvent = 'gameStart';
 const container = document.getElementById('reviewsContainer');
 
 reviewsData.forEach(review => {
@@ -45,6 +47,9 @@ class Reviews {
         this.books = storedReviews ? JSON.parse(storedReviews) : {};
         this.populateReviews();
         updateReviews(this.books);
+        this.configureWebSocket();
+        const userName = localStorage.getItem("userName");
+        this.broadcastEvent(userName, GameStartEvent, {})
     }
 
     async fetchReviews() {
@@ -81,10 +86,48 @@ class Reviews {
         const issueReview = document.getElementById(name);
         issueReview.textContent = ('(' + score + ' out of 5)');
         this.books[name] = score;
+        const userName = localStorage.getItem("userName");
+        const newScore = { nam: userName, score: score, boo: name}
         localStorage.setItem("reviews", JSON.stringify(this.books))
+        this.broadcastEvent(userName, GameEndEvent, newScore)
          // Assumes updateReviews makes a backend call.
     }
+    configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = (event) => {
+      this.displayMsg('system', 'game', 'connected');
+    };
+    this.socket.onclose = (event) => {
+      this.displayMsg('system', 'game', 'disconnected');
+    };
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.type === GameEndEvent) {
+        this.displayMsg('User', msg.from, `rated ${msg.value.boo}  ${msg.value.score} out of 5`);
+      } else if (msg.type === GameStartEvent) {
+        this.displayMsg('User', msg.from, `started reveiwing`);
+      }
+    };
+  }
+
+  displayMsg(cls, from, msg) {
+    const chatText = document.querySelector('#player-messages');
+    chatText.innerHTML =
+      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+  }
+
+  broadcastEvent(from, type, value) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+  }
 }
+
+
 
 async function updateReviews(reviews) {
   try {
@@ -102,5 +145,8 @@ async function updateReviews(reviews) {
 
   }
 }
+
+
+
 
  const r = new Reviews();
