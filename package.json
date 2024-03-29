@@ -14,7 +14,8 @@
     "express": "^4.19.1",
     "mongobd": "^0.0.1-security.0",
     "mongodb": "^6.5.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "websocket": "^1.0.34"
   },
   "description": ""
 }
