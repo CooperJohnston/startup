@@ -15,7 +15,8 @@
     "mongobd": "^0.0.1-security.0",
     "mongodb": "^6.5.0",
     "uuid": "^9.0.1",
-    "websocket": "^1.0.34"
+    "websocket": "^1.0.34",
+    "ws": "^8.16.0"
   },
-  "description": ""
+  "description": "Allowing you to find something worthwhile to read, and appreciate what your friends think."
 }
