@@ -52,6 +52,7 @@ A possible design for the website, allowing users to collect and review products
 - **RESTRICTION** - If you aren't allowed, an error message have been given
 ## WEBSCOKET
 - **PREQUISITIES** - SIMON WEBSOCKET AND 10 commits
+- Live messaging occurs that updates users on book reviews that are made! See what everyone is doing.
 - **BACKEND LISTENS FOR THE CONNECTION** - The peerProxy.js file listens for websocket data and is used by the index.js file
 - **FRONTEND MAKES CONNECTION** - in the reviews.js frontend file, a websocket connection is made to display scores
 - **DATA IS SENT** - user information and scores is sent to the user.
