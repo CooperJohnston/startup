@@ -96,7 +96,7 @@ class Reviews {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
     this.socket.onopen = (event) => {
-      this.displayMsg('system', 'game', 'connected');
+      this.displayMsg('system', 'Database', 'INITIATED');
     };
     this.socket.onclose = (event) => {
       this.displayMsg('system', 'game', 'disconnected');
