@@ -57,3 +57,5 @@ A possible design for the website, allowing users to collect and review products
 - **FRONTEND MAKES CONNECTION** - in the reviews.js frontend file, a websocket connection is made to display scores
 - **DATA IS SENT** - user information and scores is sent to the user.
 - **DATA IS DISPLAYED ON THE APPLICATION** - The newest information is sent to the server and displayed by websocket
+## REACT
+- **PREQUEISITES** - SIMON REACT and 10+ commits

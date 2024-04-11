@@ -10,6 +10,7 @@ const reviewsData = [
 ];
 const GameEndEvent = 'gameEnd';
 const GameStartEvent = 'gameStart';
+
 const container = document.getElementById('reviewsContainer');
 
 reviewsData.forEach(review => {
@@ -42,14 +43,17 @@ reviewsData.forEach(review => {
 });
 
 class Reviews {
+    socket;
+
     constructor() {
         const storedReviews = localStorage.getItem("reviews");
         this.books = storedReviews ? JSON.parse(storedReviews) : {};
         this.populateReviews();
         updateReviews(this.books);
-        this.configureWebSocket();
+
         const userName = localStorage.getItem("userName");
-        this.broadcastEvent(userName, GameStartEvent, {})
+        this.configureWebSocket();
+
     }
 
     async fetchReviews() {
@@ -82,11 +86,13 @@ class Reviews {
     }
 
     review(name) {
+        const userName = localStorage.getItem("userName");
+        this.broadcastEvent(userName, GameStartEvent, {})
         let score = prompt("What would you rate this out of 5?");
         const issueReview = document.getElementById(name);
         issueReview.textContent = ('(' + score + ' out of 5)');
         this.books[name] = score;
-        const userName = localStorage.getItem("userName");
+        //const userName = localStorage.getItem("userName");
         const newScore = { nam: userName, score: score, boo: name}
         localStorage.setItem("reviews", JSON.stringify(this.books))
         this.broadcastEvent(userName, GameEndEvent, newScore)
@@ -99,7 +105,7 @@ class Reviews {
       this.displayMsg('system', 'Database', 'INITIATED');
     };
     this.socket.onclose = (event) => {
-      this.displayMsg('system', 'game', 'disconnected');
+      this.displayMsg('system', 'Database', 'disconnected');
     };
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
