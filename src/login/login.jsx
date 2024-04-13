@@ -1,73 +1,64 @@
-                          import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
-  const loginUser = async () => {
-    const userName = document.querySelector('#User').value;
-    const password = document.querySelector('#psw').value;
-    const response = await fetch(`/api/auth/login`, {
-      method: 'post',
-      body: JSON.stringify({ email: userName, password: password }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
+const Login = ({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-    if (response.ok) {
-      localStorage.setItem('userName', userName);
-      // Redirect to library page or handle success in React way
-    } else {
-      const body = await response.json();
-      const modalEl = document.querySelector('#msgModal');
-      modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
-      const msgModal = new bootstrap.Modal(modalEl, {});
-      msgModal.show();
-    }
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const createUser = async () => {
-    const userName = document.querySelector('#User').value;
-    const password = document.querySelector('#psw').value;
-    const response = await fetch(`/api/auth/create`, {
-      method: 'post',
-      body: JSON.stringify({ email: userName, password: password }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
+    // Perform your login logic here, for example, using fetch
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (response.ok) {
-      localStorage.setItem('userName', userName);
-      // Redirect to library page or handle success in React way
-    } else {
-      const body = await response.json();
-      const modalEl = document.querySelector('#msgModal');
-      modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
-      const msgModal = new bootstrap.Modal(modalEl, {});
-      msgModal.show();
+      if (response.ok) {
+        // If login is successful, call the onLogin callback and navigate to the library page
+        onLogin();
+        navigate('/library'); // Navigate to the library page
+      } else {
+        // Handle unsuccessful login (e.g., display error message)
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
     }
   };
 
   return (
-    <div className="container-fluid bg-secondary text-center">
-      <h1>CS260 Startup: ONLINE COMIC BOOK REVIEW LIBRARY</h1>
-      <div>
-        <input type="form-control" id="User" placeholder="Enter Username" />
-        <input type="password" placeholder="Enter Password" id="psw" />
-        <button type="button" className="btn btn-primary" onClick={loginUser}>Login</button>
-        <button type="button" className="btn btn-primary" onClick={createUser}>Create</button>
-      </div>
-      <div className="modal fade" id="msgModal" tabIndex="-1">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content text-dark">
-            <div className="modal-body">error message here</div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
-      </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };
 
 export default Login;
+

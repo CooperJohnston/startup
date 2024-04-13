@@ -65,7 +65,7 @@ const Scores = () => {
   };
 
   return (
-    <main className="container-fluid bg-secondary text-left">
+    <div className="container-fluid bg-secondary text-left">
       <table className="table table-warning table-striped-columns">
         <thead className="table-dark">
           <tr>
@@ -75,7 +75,16 @@ const Scores = () => {
         </thead>
         <tbody id="scores"></tbody>
       </table>
-    </main>
+
+      <footer class="bg-dark text-white-50">
+    <div class ="container-fluid">
+      <hr />
+      <span class="text-reset">Created By Cooper Johnston</span>
+
+      <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
+    </div>
+    </footer>
+    </div>
   );
 };
 
