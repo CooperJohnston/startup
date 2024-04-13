@@ -59,3 +59,7 @@ A possible design for the website, allowing users to collect and review products
 - **DATA IS DISPLAYED ON THE APPLICATION** - The newest information is sent to the server and displayed by websocket
 ## REACT
 - **PREQUEISITES** - SIMON REACT and 10+ commits
+- **VITE BUNDLING** - the application is now set up using vite and configured in the vite.config
+- **REACT COMPONENTS** - each page of the website is bundled using react.
+- **HOOKS** - The login uses the use state hook,and the user information uses the useEffect hook
+- **ROUTER** - THe app is now rendered in a react router
