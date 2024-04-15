@@ -56,7 +56,15 @@ const Login = ({ onLogin }) => {
         </div>
         <button type="submit">Login</button>
       </form>
-    </div>
+      <footer className="bg-dark text-white-50">
+        <div className="container-fluid">
+            <hr/>
+            <span className="text-reset">Created By Cooper Johnston</span>
+
+            <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
+        </div>
+    </footer>
+      </div>
   );
 };
 

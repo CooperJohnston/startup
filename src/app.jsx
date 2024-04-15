@@ -42,17 +42,17 @@ const App = () => {
                   <>
                     <li className="nav-item">
                       <Link className="nav-link" to="/profile">
-                        Profile
+                        User
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/reviews">
-                        Reviews
+                        MyBooks
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/scores">
-                        Scores
+                        Myinfo
                       </Link>
                     </li>
                     <li className="nav-item">
