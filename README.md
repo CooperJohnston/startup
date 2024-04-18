@@ -60,6 +60,6 @@ A possible design for the website, allowing users to collect and review products
 ## REACT
 - **PREQUEISITES** - SIMON REACT and 10+ commits
 - **VITE BUNDLING** - the application is now set up using vite and configured in the vite.config
-- **REACT COMPONENTS** - each page of the website is bundled using react.
+- **REACT COMPONENTS** - each page of the website is bundled using react, inside the src folder
 - **HOOKS** - The login uses the use state hook,and the user information uses the useEffect hook
-- **ROUTER** - THe app is now rendered in a react router
+- **ROUTER** - THe app is now rendered in a react router. I had an issues with the review.jsx file so i used the "use effect button"
