@@ -38,7 +38,8 @@ const Scores = () => {
 
       if (response.ok) {
         const updatedReviews = await response.json();
-        localStorage.setItem('reviews', JSON.stringify(reviews));
+        setReviews(updatedReviews);
+        localStorage.setItem('reviews', JSON.stringify(updatedReviews));
       } else {
         throw new Error('Failed to update reviews.');
       }
@@ -48,20 +49,16 @@ const Scores = () => {
     }
   };
 
-  const displaySortedReviews = (reviews) => {
+  const displaySortedReviews = () => {
     const reviewsArray = Object.entries(reviews);
     reviewsArray.sort((a, b) => b[1] - a[1]);
 
-    const scoresBody = document.getElementById('scores');
-    scoresBody.innerHTML = '';
-
-    reviewsArray.forEach(([name, score]) => {
-      const row = scoresBody.insertRow(-1);
-      const cellName = row.insertCell(0);
-      const cellScore = row.insertCell(1);
-      cellName.textContent = name;
-      cellScore.textContent = score;
-    });
+    return reviewsArray.map(([name, score]) => (
+      <tr key={name}>
+        <td>{name}</td>
+        <td>{score}</td>
+      </tr>
+    ));
   };
 
   return (
@@ -73,19 +70,19 @@ const Scores = () => {
             <th>Score</th>
           </tr>
         </thead>
-        <tbody id="scores"></tbody>
+        <tbody>{displaySortedReviews()}</tbody>
       </table>
 
-      <footer class="bg-dark text-white-50">
-    <div class ="container-fluid">
-      <hr />
-      <span class="text-reset">Created By Cooper Johnston</span>
-
-      <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
-    </div>
-    </footer>
+      <footer className="bg-dark text-white-50">
+        <div className="container-fluid">
+          <hr />
+          <span className="text-reset">Created By Cooper Johnston</span>
+          <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default Scores;
+

@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="container">
+      <div className="container-fluid"> {/* Use container-fluid to make the navbar stretch */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">

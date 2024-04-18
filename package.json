@@ -1,19 +1,21 @@
 {
-  "dependencies": {
-    "express": "^4.19.2",
-    "node": "^18.20.2",
-    "nope": "^1.1.0",
-    "react": "^18.2.0",
-    "react-router-dom": "^6.22.3",
-    "vite": "^5.2.8"
-  },
-  "name": "startup",
-  "description": "Allowing you to find something worthwhile to read, and appreciate what your friends think.",
-  "version": "1.0.0",
-  "main": "vite.config.js",
+  "name": "simon-react",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "author": "Cooper Johnston",
-  "license": "ISC"
+  "devDependencies": {
+    "http-proxy-middleware": "^3.0.0",
+    "vite": "^4.3.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3"
+  }
 }

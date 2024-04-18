@@ -6,10 +6,7 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Perform your login logic here, for example, using fetch
+  const handleLogin = async () => {
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -20,11 +17,9 @@ const Login = ({ onLogin }) => {
       });
 
       if (response.ok) {
-        // If login is successful, call the onLogin callback and navigate to the library page
         onLogin();
-        navigate('/library'); // Navigate to the library page
+        navigate('/reviews');
       } else {
-        // Handle unsuccessful login (e.g., display error message)
         console.error('Login failed');
       }
     } catch (error) {
@@ -32,10 +27,31 @@ const Login = ({ onLogin }) => {
     }
   };
 
+  const handleCreateUser = async () => {
+    try {
+      const response = await fetch('/api/auth/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        // User created successfully, navigate to the library page
+        navigate('/reviews');
+      } else {
+        console.error('User creation failed');
+      }
+    } catch (error) {
+      console.error('User creation error:', error);
+    }
+  };
+
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div>
           <label htmlFor="username">Username</label>
           <input
@@ -54,19 +70,20 @@ const Login = ({ onLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
       </form>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleCreateUser}>Create New User</button>
       <footer className="bg-dark text-white-50">
         <div className="container-fluid">
-            <hr/>
-            <span className="text-reset">Created By Cooper Johnston</span>
-
-            <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
+          <hr />
+          <span className="text-reset">Created By Cooper Johnston</span>
+          <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
         </div>
-    </footer>
-      </div>
+      </footer>
+    </div>
   );
 };
 
 export default Login;
+
 

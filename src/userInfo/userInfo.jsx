@@ -1,33 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Profile = () => {
-  useEffect(() => {
-    const display = () => {
-      fetch('https://api.quotable.io/random')
-        .then((response) => response.json())
-        .then((data) => {
-          const user = document.getElementById('Usa');
-          const name = localStorage.getItem('userName');
-          user.textContent = 'Username: ' + name;
+  const [userData, setUserData] = useState({
+    name: '',
+    totalRatings: 0,
+    comicQuote: ''
+  });
 
-          const facts = document.createElement('ul');
-          const l = document.createElement('li');
-          l.textContent =
-            'I have given ' +
-            Object.keys(JSON.parse(localStorage.getItem('reviews'))).length +
-            ' total ratings';
-          facts.appendChild(l);
-          const b = document.createElement('li');
-          b.textContent = "Comic book quote of the day: '" + data.content + "'";
-          facts.appendChild(b);
-          user.appendChild(facts);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch user data
+        const name = localStorage.getItem('userName');
+        const response = await fetch('https://api.quotable.io/random');
+        const data = await response.json();
+        const totalRatings = Object.keys(JSON.parse(localStorage.getItem('reviews'))).length;
+
+        // Update state
+        setUserData({
+          name: name,
+          totalRatings: totalRatings,
+          comicQuote: data.content
         });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
-    display();
+    fetchData();
   }, []);
 
-  const logout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('userName');
     fetch(`/api/auth/logout`, {
       method: 'delete',
@@ -36,17 +39,20 @@ const Profile = () => {
 
   return (
     <div>
-      <p id="Usa"></p>
-      <button onClick={logout}>Logout</button>
+      <p>Username: {userData.name}</p>
+      <ul>
+        <li>I have given {userData.totalRatings} total ratings</li>
+        <li>Comic book quote of the day: '{userData.comicQuote}'</li>
+      </ul>
+      <button onClick={handleLogout}>Logout</button>
 
-    <footer className="bg-dark text-white-50">
+      <footer className="bg-dark text-white-50">
         <div className="container-fluid">
-            <hr/>
-            <span className="text-reset">Created By Cooper Johnston</span>
-
-            <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
+          <hr/>
+          <span className="text-reset">Created By Cooper Johnston</span>
+          <a href="https://github.com/CooperJohnston/startup">Cooper Johnston's Github</a>
         </div>
-    </footer>
+      </footer>
     </div>
   );
 };
