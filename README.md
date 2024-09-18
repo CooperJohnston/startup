@@ -1,5 +1,5 @@
 # Cooper Johnston's AWS Startup
-Allowing you to find something worthwhile to read, and appreciate what your friends think.
+Allowing you to find something worthwhile to read, and appreciate what your friends think. Prototype hosted on https://startup.260startup.click
 
 ## The Pitch
 We live in an age full of connection online, but not much of it is _positive._ Additionally, sites such as lettrboxd allow for users to share opinions on film and televsion. \Finally, Comic Books are larger than ever due to the massive mainstream success of Marvel Studios.
