@@ -22,7 +22,6 @@ A possible design for the website, allowing users to collect and review products
 - **Text** - User information, suggested information, and contact information come in text information in the user information section.
 
 ## CSS DELIVERABLE
-- **PREREQUISITES** - Simon CSS successfully added, and 10+ commits occurred. Github accessible.
 - **RESIZING** - The application properly resizes in all windows
 - **Images** - Proper imagery was added for the table. Purposely, the have stayed rectangles to maintain the comic book feel.
 - **Proper Header, Footer and Main formatting**
@@ -30,13 +29,11 @@ A possible design for the website, allowing users to collect and review products
 - **Text** - UTF-8 font added to all elements/
 
 ## JAVASSCRIPT DELIVERABLE
-- **PREQUISITES** - Simon Java deployed, 10+ commits occured.
 - **WEBSOCKET** - The user information is stored in local storage, simulating a database using the users information and websocket data. When more users are added, the popular tab will display the most popular reviews of the day from all users.
 - **DATABASE** - Using a JSON structure, a list of all the scores and their respective books is stored on local storage in the system. It is updated when a user writes their new score. The website autotamtically formats itself as more books are added. This would simulate a server full of book information.
 - **JAVASCRIPT INTERACTIONS** - Users can leave simple reviews of books and view popular books as they appear from other users. They can log in and interact with books. The website automatically updates their scores and review total.
 
 ## SERVICE DELIVERABLE
-- **PREQUISITES** - Simon service deployed, 10 + commits occured
 - **Node.js/Express HTTP service** - Created using node and express through EXPRESS in index
 - **Static middleware for frontend** - Added an async function to the reviews class so that a JSON file can be updated by the server.
 - **Calls to third party endpoints** - A fetch call is made on the UNSERINFO.JS page, a 3rd party fetch is made to the random qoute API. I have found an API that has super hero information but I am waiting on authroization with my API key, so the random qoute is a placeholder to make it clear that the technology works.
@@ -44,21 +41,18 @@ A possible design for the website, allowing users to collect and review products
 - **Frontend calls service endpoints** - in index.js accesses the JSON object where reviews are stored on the frontend using a get ("/get-reviews")
 
 ## SERVICE ENDPOINTS
-- **PREQUISITIES** - SIMON LOGIN AND 10 commits
 - **NEW USER** - Database.js has a code to add a new user
 - **USER AUTHENTICATION** - using a cookie parser and an ID, as well as a nested router, users are  authenticted
 - **USER AUTHENTICATION** - yup
 - **MONGODB** - data and credentials are stored in mongodb
 - **RESTRICTION** - If you aren't allowed, an error message have been given
 ## WEBSCOKET
-- **PREQUISITIES** - SIMON WEBSOCKET AND 10 commits
 - Live messaging occurs that updates users on book reviews that are made! See what everyone is doing.
 - **BACKEND LISTENS FOR THE CONNECTION** - The peerProxy.js file listens for websocket data and is used by the index.js file
 - **FRONTEND MAKES CONNECTION** - in the reviews.js frontend file, a websocket connection is made to display scores
 - **DATA IS SENT** - user information and scores is sent to the user.
 - **DATA IS DISPLAYED ON THE APPLICATION** - The newest information is sent to the server and displayed by websocket
 ## REACT
-- **PREQUEISITES** - SIMON REACT and 10+ commits
 - **VITE BUNDLING** - the application is now set up using vite and configured in the vite.config
 - **REACT COMPONENTS** - each page of the website is bundled using react, inside the src folder
 - **HOOKS** - The login uses the use state hook,and the user information uses the useEffect hook
