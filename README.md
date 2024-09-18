@@ -1,4 +1,4 @@
-# Cooper Johnston's CS260 Startup
+# Cooper Johnston's AWS Startup
 Allowing you to find something worthwhile to read, and appreciate what your friends think.
 
 ## The Pitch
